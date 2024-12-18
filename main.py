@@ -9,6 +9,7 @@ Chaira and Glory
 
 FINAL PROJECT IMPLEMENTATION
 
+
 """
 
 """
@@ -121,6 +122,7 @@ def minimax(board, depth, alpha, beta, maxPlayer):
             alpha = max(alpha, eval)
 
             if beta <= alpha:
+                print(f"Pruning at depth {depth} with alpha={alpha}, beta={beta}")
                 break
         return maxEval, bestMove
     
@@ -138,6 +140,7 @@ def minimax(board, depth, alpha, beta, maxPlayer):
             # minEval = min(minEval, eval)
             beta = min(beta, eval)
             if beta <= alpha:
+                print(f"Pruning at depth {depth} with alpha={alpha}, beta={beta}")
                 break
         return minEval, bestMove
 
