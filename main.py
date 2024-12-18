@@ -9,25 +9,50 @@ Chaira and Glory
 
 FINAL PROJECT IMPLEMENTATION
 
+"""
 
 """
+Chooses an opening strategy at random
+"""
+def choose_opening():
+    openings = ['Sicilian', 'Ruy Lopez', 'Italian']
+    return random.choice(openings)
+
+"""
+Makes an opening move based on chosen opening
+"""
+def make_opening_moves(board, opening):
+    if opening == 'Sicilian':
+        moves = ['e2e4', 'c7c5']
+    elif opening == 'Ruy Lopez':
+        moves = ['e2e4', 'e7e5', 'g1f3', 'b8c6', 'f1b5']
+    elif opening == 'Italian':
+        moves = ['e2e4', 'e7e5', 'g1f3', 'b8c6', 'f1c4']
+    
+    for move in moves:
+        board.push_san(move)
 
 """
 Initial function that is called to start the game and prompt the user to choose to play as Black or White.
 """
 def init_set():
-    print('=====================================================\n\t\t\tCSC 290 Minimax Chess Bot V.02 by Chaira and Glory\t\t\t\n=====================================================')
+    print('=====================================================')
+    print('\t\t\tCSC 290 Minimax Chess Bot V.02 by Chaira and Glory')
+    print('=====================================================')
     print('Time:', datetime.datetime.now())
     comp = ''
     while(comp not in ['w', 'b', 'white', 'black', 'wh', 'bl']):
         comp = input('Computer Player? (w=white/b=black): ')
-    # starting_pos = input('Starting FEN position? (hit ENTER for standard starting position): ')
+    
+    board = chess.Board()
     if 'b' in comp:
-        print('You are playing as BLACK. The computer will start first.\n')
+        print('You are playing as BLACK. The computer will start first.')
+        opening = choose_opening()
+        make_opening_moves(board, opening)
     elif 'w' in comp:
-        print('You are playing as WHITE. Please begin the first move.\n')
-    print('\n')
-    return comp
+        print('You are playing as WHITE. Please begin the first move.')
+
+    return comp, board
 
 """
 Updates the chess board
