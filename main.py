@@ -37,7 +37,7 @@ Initial function that is called to start the game and prompt the user to choose 
 """
 def init_set():
     print('=====================================================')
-    print('\t\t\tCSC 290 Minimax Chess Bot V.02 by Chaira Harder')
+    print('\t\t\tMinimax Chess Bot V.02 by Chaira Harder')
     print('=====================================================')
     print('Time:', datetime.datetime.now())
     comp = ''
